@@ -1,0 +1,2 @@
+Este é um código com o intuito de fazer um gerador de currículos, usando HTML, CSS, JavaScript e também PHP.
+Você consegue ter acesso ao código usando algum editor de texto como Visual Studio Code e para rodar esse código temos a opção do Xamp ou Wamp.

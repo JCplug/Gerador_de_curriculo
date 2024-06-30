@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Currículo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function adicionarExperiencia() {
+            const experienciaContainer = document.getElementById('experiencia-container');
+            const novaExperiencia = document.createElement('div');
+            novaExperiencia.className = 'form-group';
+            novaExperiencia.innerHTML = `
+                <label for="experiencia">Experiência:</label>
+                <textarea id="experiencia" name="experiencia[]" required></textarea>
+            `;
+            experienciaContainer.appendChild(novaExperiencia);
+        }
+
+        function imprimirCurriculo() {
+            window.print();
+        }
+
+        function baixarCurriculo() {
+            const curriculoHtml = document.querySelector('.curriculo').outerHTML;
+            const blob = new Blob([curriculoHtml], { type: 'text/html' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'curriculo.html';
+            link.click();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerador de Currículo</h1>
+        <form action="gerar_curriculo.php" method="post">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" required>
+            </div>
+
+            <div class="form-group">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input type="date" id="data_nascimento" name="data_nascimento" required>
+            </div>
+
+            <div class="form-group">
+                <label for="objetivo">Objetivo:</label>
+                <textarea id="objetivo" name="objetivo" required></textarea>
+            </div>
+
+            <div id="experiencia-container">
+                <div class="form-group">
+                    <label for="experiencia">Experiência:</label>
+                    <textarea id="experiencia" name="experiencia[]" required></textarea>
+                </div>
+            </div>
+            <button type="button" class="add-experience-button" onclick="adicionarExperiencia()">+</button>
+
+            <div class="form-group">
+                <label for="formacao">Formação:</label>
+                <textarea id="formacao" name="formacao" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="habilidades">Habilidades:</label>
+                <textarea id="habilidades" name="habilidades" required></textarea>
+            </div>
+
+            <button type="submit" class="generate-button">Gerar Currículo</button>
+        </form>
+    </div>
+</body>
+</html>
